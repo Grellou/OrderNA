@@ -312,3 +312,17 @@ tr.table-info .fw-bold {
 .table tr:last-child td {
   border-bottom-color: rgba(75, 120, 175, 0.3) !important;
 }
+
+/* =================================== */
+/* == FONT & CONTRAST FIXES == */
+/* =================================== */
+
+.table-striped > tbody > tr:nth-of-type(odd) > *,
+.table-striped > tbody > tr:nth-of-type(even) > * {
+  color: var(--text-primary);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 1; /* Override Bootstrap's default opacity on placeholders */
+}
