@@ -1,18 +1,32 @@
 import logging
 
-from flask import Blueprint, flash, redirect, render_template, url_for
+import pandas as pd
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user
 
 from app import db
 from app.forms.auth_forms import CreateAccountForm
+from app.models.item_model import ItemModel
 from app.models.user_model import UserModel
 
 bp = Blueprint("admin", __name__)
 
 
+@bp.route("/admin")
+def admin_page():
+
+    # Redirect if user is not admin
+    if not current_user.is_admin:
+        flash("Insufficient permisions.", "danger")
+        return redirect(url_for("home.home_page"))
+
+    return render_template("admin/admin.html")
+
+
 @bp.route("/admin/create-account", methods=["GET", "POST"])
 def create_account_page():
 
+    # Redirect if user is not admin
     if not current_user.is_admin:
         flash("Insufficient permisions.", "danger")
         return redirect(url_for("home.home_page"))

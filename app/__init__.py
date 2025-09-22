@@ -37,10 +37,12 @@ def create_app(config_class="Development"):
     from app.routes.admin_routes import bp as AdminBlueprint
     from app.routes.auth_routes import bp as AuthBlueprint
     from app.routes.home_routes import bp as HomeBlueprint
+    from app.routes.stock_routes import bp as StockBlueprint
 
     app.register_blueprint(AuthBlueprint)
     app.register_blueprint(HomeBlueprint)
     app.register_blueprint(AdminBlueprint)
+    app.register_blueprint(StockBlueprint)
 
     # Register CLI commands
     from app.utils import register_commands
