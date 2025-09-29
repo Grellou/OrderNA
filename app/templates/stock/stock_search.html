@@ -1,0 +1,11 @@
+<!-- Template used to show search results in stock page -->
+
+{% for result in results %}
+<tr>
+  <td>{{ result.name }}</td>
+  <td>{{ result.category }}</td>
+  <td>{{ result.language }}</td>
+  <td>{{ result.quantity }}</td>
+  <td>{{ result.price }}</td>
+</tr>
+{% endfor %}

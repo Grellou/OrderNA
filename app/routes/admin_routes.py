@@ -12,6 +12,7 @@ from app.models.user_model import UserModel
 bp = Blueprint("admin", __name__)
 
 
+# Main admin page
 @bp.route("/admin")
 def admin_page():
 
@@ -23,6 +24,7 @@ def admin_page():
     return render_template("admin/admin.html")
 
 
+# Admin page to create new user accounts
 @bp.route("/admin/create-account", methods=["GET", "POST"])
 def create_account_page():
 

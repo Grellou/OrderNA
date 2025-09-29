@@ -1,6 +1,7 @@
 from app import db
 
 
+# Model for literature and other stock
 class ItemModel(db.Model):
     __tablename__ = "items"
 

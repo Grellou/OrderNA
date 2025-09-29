@@ -14,6 +14,8 @@
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
+    <!-- Include HTMX library -->
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org/dist/htmx.min.js"></script>
     {% block styles %}{% endblock %}
 </head>
 <body>
@@ -65,7 +67,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user-circle me-1"></i>{{ current_user.username }}
+                <i class="fas fa-user-circle me-1"></i>{{ current_user.email_address }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" href="#">Profile</a></li>

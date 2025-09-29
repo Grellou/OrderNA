@@ -6,7 +6,6 @@
   --accent: #64b5f6;
   --success: #81c784;
   --danger: #e57373;
-  --warning: #ffb74d;
   --info: #4fc3f7;
 }
 
@@ -20,22 +19,19 @@ body {
 }
 
 .navbar {
-  background-color: rgba(18, 18, 18, 0.9) !important;
+  background-color: rgba(18, 18, 18, 0.9);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-brand {
-  font-weight: 600;
-  color: var(--accent) !important;
+.navbar-brand,
+.nav-link:hover,
+a:hover {
+  color: var(--accent);
 }
 
 .nav-link {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   transition: color 0.3s;
-}
-
-.nav-link:hover {
-  color: var(--accent) !important;
 }
 
 .card {
@@ -45,13 +41,9 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
+.card-header,
 .card-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -59,55 +51,56 @@ body {
   margin-top: 2rem;
   transition: transform 0.3s;
 }
-
 .auth-card:hover {
   transform: translateY(-5px);
 }
-
-.form-control {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-primary);
+@media (max-width: 768px) {
+  .auth-card {
+    margin-top: 1rem;
+  }
 }
 
-.form-control:focus {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: var(--accent);
+.form-control,
+.form-select,
+input[type="date"],
+input[type="number"] {
+  background-color: #2b2b2b;
   color: var(--text-primary);
+  border: 1px solid #444;
+}
+.form-control:hover,
+.form-select:hover {
+  background-color: #333;
+}
+.form-control:focus,
+.form-select:focus {
   box-shadow: 0 0 0 0.25rem rgba(100, 181, 246, 0.25);
+  border-color: var(--accent);
 }
-
 .form-control.is-invalid {
   border-color: var(--danger);
   background-image: none;
+}
+.form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
 }
 
 .btn-primary {
   background-color: var(--accent);
   border-color: var(--accent);
 }
-
 .btn-primary:hover {
   background-color: #4da3e4;
   border-color: #4da3e4;
 }
-
-.alert-success {
-  background-color: rgba(129, 199, 132, 0.2);
-  color: var(--success);
-  border-color: rgba(129, 199, 132, 0.4);
+.btn-outline-primary,
+.btn-outline-danger {
+  border-width: 2px;
 }
-
-.alert-danger {
-  background-color: rgba(229, 115, 115, 0.2);
-  color: var(--danger);
-  border-color: rgba(229, 115, 115, 0.4);
-}
-
-.alert-info {
-  background-color: rgba(79, 195, 247, 0.2);
-  color: var(--info);
-  border-color: rgba(79, 195, 247, 0.4);
+.btn-outline-primary:hover,
+.btn-outline-danger:hover {
+  color: #ffffff;
 }
 
 .alert {
@@ -119,11 +112,9 @@ body {
   border-radius: 0.25rem;
   width: 100%;
 }
-
 .alert-dismissible {
-  padding-right: 3rem; /* Provide space for close button */
+  padding-right: 3rem;
 }
-
 .alert-dismissible .btn-close {
   position: absolute;
   top: 0;
@@ -131,18 +122,30 @@ body {
   padding: 0.75rem 1.25rem;
   color: inherit;
 }
-
 .alert-content {
   flex: 1;
+}
+.alert-success {
+  background-color: rgba(129, 199, 132, 0.2);
+  color: var(--success);
+  border-color: rgba(129, 199, 132, 0.4);
+}
+.alert-danger {
+  background-color: rgba(229, 115, 115, 0.2);
+  color: var(--danger);
+  border-color: rgba(229, 115, 115, 0.4);
+}
+.alert-info {
+  background-color: rgba(75, 120, 175, 0.2);
+  color: var(--text-primary);
+  border-color: rgba(75, 120, 175, 0.3);
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
 }
-
 a:hover {
-  color: #4da3e4;
   text-decoration: underline;
 }
 
@@ -158,171 +161,67 @@ footer {
   padding: 30px 0;
 }
 
-/* Dropdown menu */
 .dropdown-menu-dark {
   background-color: var(--bg-card);
 }
-
 .dropdown-item {
   color: var(--text-primary);
 }
-
 .dropdown-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .auth-card {
-    margin-top: 1rem;
-  }
-}
-
-.table {
-  color: var(
-    --text-primary
-  ); /* Use the same light text color as rest of the theme */
-}
-
-.table thead {
+.table,
+.table thead,
+.table th,
+.table td {
   color: var(--text-primary);
   border-color: rgba(255, 255, 255, 0.1);
 }
-
-.table th {
-  font-weight: 600;
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-.table td {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Better hover effect for dark theme */
-.table-hover tbody tr:hover {
-  background-color: rgba(100, 181, 246, 0.25) !important;
-  color: #ffffff !important; /* Pure white with !important */
-}
-
-.table-hover tbody tr:hover td {
-  color: #ffffff !important;
-}
-
+.table-hover tbody tr:hover,
+.table-hover tbody tr:hover td,
 .table-hover tbody tr:hover a {
+  background-color: rgba(100, 181, 246, 0.25);
   color: #ffffff !important;
   text-decoration: underline;
 }
-
 .table-hover tbody tr:hover .badge {
   border: 1px solid white;
 }
+.table-striped > tbody > tr:nth-of-type(odd) > *,
+.table-striped > tbody > tr:nth-of-type(even) > * {
+  color: var(--text-primary);
+}
+.table-info,
+tr.table-info td {
+  background-color: rgba(75, 120, 175, 0.2) !important;
+  border-color: rgba(75, 120, 175, 0.3) !important;
+}
+tr.table-info .fw-bold {
+  color: var(--accent) !important;
+}
+.table tr:last-child td {
+  border-bottom-color: rgba(75, 120, 175, 0.3) !important;
+}
 
-/* Badge contrast improvements */
-.badge.bg-success {
+.badge.bg-success,
+.badge.bg-secondary,
+.badge.bg-info {
   color: #ffffff;
 }
-
-.badge.bg-secondary {
-  color: #ffffff;
+.badge.bg-info {
+  background-color: rgba(100, 181, 246, 0.8) !important;
 }
-
-/* Action buttons more visible */
-.btn-outline-primary,
-.btn-outline-danger {
-  border-width: 2px;
-}
-
-.btn-outline-primary:hover,
-.btn-outline-danger:hover {
-  color: #ffffff;
-}
-
 .badge.rounded-pill {
   padding: 0.35em 0.65em;
   font-weight: 400;
   vertical-align: middle;
 }
-
-.badge.bg-info {
-  background-color: rgba(100, 181, 246, 0.8) !important;
-  color: #ffffff;
-}
-
 h3 .badge {
   position: relative;
   top: -2px;
 }
 
-.form-control,
-.form-select,
-.form-control:focus,
-.form-select:focus {
-  background-color: #2b2b2b;
-  color: var(--text-primary);
-  border-color: #444;
-}
-
-input[type="date"],
-input[type="number"] {
-  background-color: #2b2b2b !important;
-  color: var(--text-primary) !important;
-}
-
-.table-info {
-  background-color: rgba(75, 120, 175, 0.2) !important;
-  color: var(--text-primary) !important;
-}
-
-.form-control:hover,
-.form-select:hover {
-  background-color: #333;
-}
-
-.form-control:focus,
-.form-select:focus {
-  box-shadow: 0 0 0 0.25rem rgba(100, 181, 246, 0.25);
-}
-
-/* Fix alerts and notifications */
-.alert-info {
-  background-color: rgba(75, 120, 175, 0.2);
-  color: var(--text-primary);
-  border-color: rgba(75, 120, 175, 0.3);
-}
-
-/* Fix calendar popup */
 ::-webkit-calendar-picker-indicator {
   filter: invert(0.8);
-}
-
-tr.table-info {
-  background-color: rgba(75, 120, 175, 0.2) !important;
-}
-
-tr.table-info td {
-  background-color: rgba(75, 120, 175, 0.2) !important;
-  border-color: rgba(75, 120, 175, 0.3) !important;
-}
-
-tr.table-info .fw-bold {
-  color: var(--accent) !important;
-}
-
-/* Fix any specific border issues */
-.table tr:last-child td {
-  border-bottom-color: rgba(75, 120, 175, 0.3) !important;
-}
-
-/* =================================== */
-/* == FONT & CONTRAST FIXES == */
-/* =================================== */
-
-.table-striped > tbody > tr:nth-of-type(odd) > *,
-.table-striped > tbody > tr:nth-of-type(even) > * {
-  color: var(--text-primary);
-}
-
-.form-control::placeholder {
-  color: var(--text-secondary);
-  opacity: 1; /* Override Bootstrap's default opacity on placeholders */
 }

@@ -3,6 +3,7 @@ from flask_login import UserMixin
 from app import bcrypt, db, login_manager
 
 
+# Model for user accounts
 class UserModel(db.Model, UserMixin):
     __tablename__ = "users"
 

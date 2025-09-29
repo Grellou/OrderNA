@@ -12,12 +12,7 @@
       <div class="card-body">
 
         <div class="mb-4">
-          <form method="GET" action="{{ url_for('stock.stock_page') }}" class="d-flex">
-            <input type="text" name="search" class="form-control me-2" placeholder="Search by name..." value="{{ search_term or '' }}">
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-search"></i>Search
-            </button>
-          </form>
+            <input type="text" name="query" class="input" placeholder="Search..." hx-get="/stock/search" hx-trigger="keyup changed delay:500ms" hx-target="#results">
         </div>
 
         <div class="table-responsive">
@@ -31,7 +26,7 @@
                 <th>Price</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="results">
               {% for item in items %}
               <tr>
                 <td>{{ item.name }}</td>
