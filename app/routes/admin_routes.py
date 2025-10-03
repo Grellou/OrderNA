@@ -1,8 +1,8 @@
 import logging
 
-import pandas as pd
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user
+from sqlalchemy import asc
 
 from app import db
 from app.forms.auth_forms import CreateAccountForm
@@ -53,3 +53,57 @@ def create_account_page():
             )
             logging.error(f"Error while creating account: {e}")
     return render_template("admin/create_account.html", form=form)
+
+
+@bp.route("/admin/edit-stock", methods=["GET"])
+def edit_stock_page():
+
+    # Redirect if user is not admin
+    if not current_user.is_admin:
+        flash("Insufficient permisions.", "danger")
+        return redirect(url_for("home.home_page"))
+
+    # Display all stock
+    items = ItemModel.query.order_by(asc(ItemModel.name))
+
+    return render_template("admin/edit_stock.html", items=items)
+
+
+@bp.route("/admin/edit-stock", methods=["POST"])
+def update_stock_page():
+
+    # Debug
+    print("FORM DATA:", request.form)
+
+    # Redirect if user is not admin
+    if not current_user.is_admin:
+        flash("Insufficient permisions.", "danger")
+        return redirect(url_for("home.home_page"))
+
+    # Grab item data from saved input
+    item_id = request.form.get("item_id")
+    quantity = request.form.get("quantity")
+    price = request.form.get("price")
+
+    try:
+        quantity = int(quantity)  # type: ignore
+        price = float(price)  # type: ignore
+    except ValueError:
+        return "Invalid data", 400
+
+    item = ItemModel.query.get(item_id)
+    if not item:
+        return "Item not found", 404
+
+    item.quantity = quantity
+    item.price = price
+
+    # Add to db
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        flash("An error occurred while editing item data. Please try again.", "danger")
+        logging.error(f"Error while editing item data: {e}")
+
+    return render_template("admin/_stock_row.html", item=item)

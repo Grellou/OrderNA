@@ -1,0 +1,35 @@
+<tr>
+  <!-- Visible values and editable fields -->
+  <td>{{ item.name }}</td>
+  <td>{{ item.category }}</td>
+  <td>{{ item.language }}</td>
+  <td colspan="2">
+    <form
+      hx-post="/admin/edit-stock"
+      hx-target="closest tr"
+      hx-include="closest form"
+      style="display: inline-flex; gap: 8px; align-items: center"
+    >
+      <input
+        type="number"
+        name="quantity"
+        value="{{
+        item.quantity
+        }}"
+        class="form-control form-control-sm"
+      />
+      <input
+        type="number"
+        name="price"
+        value="{{
+        item.price
+        }}"
+        class="form-control form-control-sm"
+      />
+      <!-- Hidden item id, csrf token -->
+      <input type="hidden" name="item_id" value="{{ item.id }}" />
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <button type="submit" class="btn btn-primary btn-small">Save</button>
+    </form>
+  </td>
+</tr>
