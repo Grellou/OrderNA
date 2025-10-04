@@ -85,18 +85,23 @@ def update_stock_page():
     quantity = request.form.get("quantity")
     price = request.form.get("price")
 
-    try:
-        quantity = int(quantity)  # type: ignore
-        price = float(price)  # type: ignore
-    except ValueError:
-        return "Invalid data", 400
+    # Check item id is valid
+    if not item_id:
+        return "Missing item_id", 400
 
+    # Get item via item id and check if available
     item = ItemModel.query.get(item_id)
     if not item:
         return "Item not found", 404
 
-    item.quantity = quantity
-    item.price = price
+    # Update value
+    try:
+        if quantity is not None:
+            item.quantity = int(quantity)  # type: ignore
+        if price is not None:
+            item.price = float(price)  # type: ignore
+    except (ValueError, TypeError):
+        return "Invalid data", 400
 
     # Add to db
     try:
