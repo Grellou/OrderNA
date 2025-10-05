@@ -1,16 +1,16 @@
 <tr>
-  <!-- Visible values and editable fields -->
+  <!-- Table values -->
   <td>{{ item.name }}</td>
   <td>{{ item.category }}</td>
   <td>{{ item.language }}</td>
   <td>{{ item.quantity }}</td>
+
+  <!-- Placeholder for error messages -->
+  <span class="error-message"></span>
+
+  <!-- Table values, editable fields, save button -->
   <td>
-    <form
-      hx-post="/admin/edit-stock"
-      hx-target="closest tr"
-      hx-include="closest form"
-      style="display: inline-flex; gap: 8px; align-items: center"
-    >
+    <form class="stock-edit-form" method="post" action="/admin/edit-stock">
       <input
         type="number"
         name="quantity"
@@ -26,12 +26,7 @@
   </td>
   <td>{{ item.price }}</td>
   <td>
-    <form
-      hx-post="/admin/edit-stock"
-      hx-target="closest tr"
-      hx-include="closest form"
-      style="display: inline-flex; gap: 8px; align-items: center"
-    >
+    <form class="stock-edit-form" method="post" action="/admin/edit-stock">
       <input
         type="number"
         name="price"

@@ -11,31 +11,20 @@
       </div>
       <div class="card-body">
 
+        <!-- Search bar -->
         <div class="mb-4">
-            <input type="text" name="query" class="input" placeholder="Search..." hx-get="/stock/search" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+            <input type="text" id="stock-search" class="form-control mb-3" placeholder="Search..." >
         </div>
 
         <div class="table-responsive">
           <table class="table table-striped table-hover">
             <thead class="table-dark">
               <tr>
-                <th>
-                  Name
-                  <a href="#" hx-get="/stock/search?sort_by=name&order=desc" hx-target="#results">↑</a>
-                  <a href="#" hx-get="/stock/search?sort_by=name&order=asc" hx-target="#results">↓</a> 
-                </th>
-                <th>Category</th>
-                <th>Language</th>
-                <th>
-                  Qty
-                  <a href="#" hx-get="/stock/search?sort_by=quantity&order=desc" hx-target="#results">↑</a>
-                  <a href="#" hx-get="/stock/search?sort_by=quantity&order=asc" hx-target="#results">↓</a> 
-                </th>
-                <th>
-                  Price
-                  <a href="#" hx-get="/stock/search?sort_by=price&order=desc" hx-target="#results">↑</a>
-                  <a href="#" hx-get="/stock/search?sort_by=price&order=asc" hx-target="#results">↓</a> 
-                </th>
+                <th class="sortable">Name</th>
+                <th class="sortable">Category</th>
+                <th class="sortable">Language</th>
+                <th class="sortable">Qty</th>
+                <th class="sortable">Price</th>
               </tr>
             </thead>
             <tbody id="results">
