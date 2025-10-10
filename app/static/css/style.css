@@ -1,3 +1,4 @@
+/* Root vars for theme colors */
 :root {
   --bg-dark: #121212;
   --bg-card: #1e1e1e;
@@ -9,6 +10,7 @@
   --info: #4fc3f7;
 }
 
+/* Body styling */
 body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
@@ -18,6 +20,7 @@ body {
   flex-direction: column;
 }
 
+/* Navbar styles */
 .navbar {
   background-color: rgba(18, 18, 18, 0.9);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -34,11 +37,29 @@ a:hover {
   transition: color 0.3s;
 }
 
+/* Card styles */
 .card {
   background-color: var(--bg-card);
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.card-hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(100, 181, 246, 0.15);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1.5rem;
 }
 
 .card-header,
@@ -47,6 +68,7 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* Auth card hover effect */
 .auth-card {
   margin-top: 2rem;
   transition: transform 0.3s;
@@ -60,6 +82,7 @@ a:hover {
   }
 }
 
+/* Form controls */
 .form-control,
 .form-select,
 input[type="date"],
@@ -89,6 +112,7 @@ input[type="number"] {
   opacity: 1;
 }
 
+/* Button styles */
 .btn-primary {
   background-color: var(--accent);
   border-color: var(--accent);
@@ -106,6 +130,7 @@ input[type="number"] {
   color: #ffffff;
 }
 
+/* Alert styles */
 .alert {
   display: flex;
   align-items: center;
@@ -125,9 +150,6 @@ input[type="number"] {
   padding: 0.75rem 1.25rem;
   color: inherit;
 }
-.alert-content {
-  flex: 1;
-}
 .alert-success {
   background-color: rgba(129, 199, 132, 0.2);
   color: var(--success);
@@ -144,6 +166,7 @@ input[type="number"] {
   border-color: rgba(75, 120, 175, 0.3);
 }
 
+/* Link styles */
 a {
   color: var(--accent);
   text-decoration: none;
@@ -152,6 +175,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Footer styles */
 footer {
   margin-top: auto;
   padding: 20px 0;
@@ -159,11 +183,13 @@ footer {
   color: var(--text-secondary);
 }
 
+/* Content container */
 .content-container {
   flex: 1;
   padding: 30px 0;
 }
 
+/* Dropdown menu */
 .dropdown-menu-dark {
   background-color: var(--bg-card);
 }
@@ -174,6 +200,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Table styles */
 .table {
   table-layout: auto;
   width: 100%;
@@ -198,36 +225,11 @@ footer {
 .table-striped > tbody > tr:nth-of-type(even) > * {
   color: var(--text-primary);
 }
-.table-info,
-tr.table-info td {
-  background-color: rgba(75, 120, 175, 0.2) !important;
-  border-color: rgba(75, 120, 175, 0.3) !important;
-}
-tr.table-info .fw-bold {
-  color: var(--accent) !important;
-}
-.table tr:last-child td {
-  border-bottom-color: rgba(75, 120, 175, 0.3) !important;
-}
 
-.badge.bg-success,
-.badge.bg-secondary,
+/* Badge styles */
+.badge {
+  margin-right: 0.5em;
+}
 .badge.bg-info {
   color: #ffffff;
-}
-.badge.bg-info {
-  background-color: rgba(100, 181, 246, 0.8) !important;
-}
-.badge.rounded-pill {
-  padding: 0.35em 0.65em;
-  font-weight: 400;
-  vertical-align: middle;
-}
-h3 .badge {
-  position: relative;
-  top: -2px;
-}
-
-::-webkit-calendar-picker-indicator {
-  filter: invert(0.8);
 }

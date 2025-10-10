@@ -10,4 +10,5 @@ bp = Blueprint("stock", __name__)
 def stock_page():
     # List all items
     items = ItemModel.query.order_by(asc(ItemModel.name))
+
     return render_template("stock/stock.html", items=items)

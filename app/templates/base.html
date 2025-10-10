@@ -46,11 +46,6 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fas fa-tags me-1"></i>Order
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="">
                 <i class="fas fa-money-bill-wave me-1"></i>Track
               </a>
@@ -68,6 +63,11 @@
           </ul>
           <ul class="navbar-nav">
             {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <i class="fas fa-cart-shopping me-1"></i>Cart
+              </a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">

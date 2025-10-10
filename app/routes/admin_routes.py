@@ -7,7 +7,7 @@ from sqlalchemy import asc
 from app import db
 from app.forms.auth_forms import CreateAccountForm
 from app.models.item_model import ItemModel
-from app.models.user_model import UserModel
+from app.services.user_service import create_account
 
 bp = Blueprint("admin", __name__)
 
@@ -35,19 +35,12 @@ def create_account_page():
 
     form = CreateAccountForm()
     if form.validate_on_submit():
-        # Create new user with provided details
-        user = UserModel(
-            email_address=form.email_address.data, description=form.description.data  # type: ignore
-        )
-        user.set_password(form.password1.data)
-
-        # Add to db
         try:
-            db.session.add(user)
-            db.session.commit()
+            create_account(
+                form.email_address.data, form.password1.data, form.description.data
+            )
             flash("Account created successfully!", "success")
         except Exception as e:
-            db.session.rollback()
             flash(
                 "An error occurred during account creation. Please try again.", "danger"
             )
@@ -71,9 +64,6 @@ def edit_stock_page():
 
 @bp.route("/admin/edit-stock", methods=["POST"])
 def update_stock_page():
-
-    # Debug
-    print("FORM DATA:", request.form)
 
     # Redirect if user is not admin
     if not current_user.is_admin:

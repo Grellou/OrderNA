@@ -1,11 +1,12 @@
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 
 from app import bcrypt, db, login_manager
 
 
 # Model for user accounts
 class UserModel(db.Model, UserMixin):
-    __tablename__ = "users"
+    __tablename__ = "user"
 
     id = db.Column(db.Integer, primary_key=True)
     email_address = db.Column(db.String(128), nullable=False, unique=True, index=True)
@@ -13,6 +14,9 @@ class UserModel(db.Model, UserMixin):
     is_active = db.Column(db.Boolean, default=True)
     is_admin = db.Column(db.Boolean, default=False)
     description = db.Column(db.String(128))
+
+    # user.carts -> list of this user's carts
+    carts = relationship("CartModel", back_populates="user")
 
     # Prevent password from being accessed
     @property
